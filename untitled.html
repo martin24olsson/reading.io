@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily readings</title>
+    <style>
+        #article-list li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <ul id="article-list">
+        <li><a href="https://www.psychologytoday.com/us/basics/decision-making">Decision making</a></li>
+        <li><a href="https://popularhistoria.se/">History</a></li>
+        <li><a href="https://www.reconstructingjudaism.org/article/attitudes-beliefs-and-values-shaping-jewish-practice/">Values</a></li>
+    </ul>
+
+    <script>
+        function generateArticleLink() {
+            const baseURL = "https://www.google.com/search?q=";
+            const siteParam = "site:psychologytoday.com inurl:blog";
+            const keywordsParam = '("communication" OR "communicate" OR "communicating") ("listen" OR "listening")';
+            const afterParam = "after:" + getCurrentDate();
+            const searchURL = `${baseURL}${siteParam}+${keywordsParam}+${afterParam}`;
+            const listItem = document.createElement("li");
+            const link = document.createElement("a");
+            link.href = searchURL;
+            link.textContent = "Communcation";
+            listItem.appendChild(link);
+            document.getElementById("article-list").appendChild(listItem);
+        }
+        generateArticleLink();
+        function getCurrentDate() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+    </script>
+</body>
+</html>
