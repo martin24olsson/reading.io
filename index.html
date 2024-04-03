@@ -17,6 +17,7 @@
         <li><a href="https://m.youtube.com/watch?v=PMBCcfQLz4M&list=PLsvrEs6MQ-gQlD7avACMCxNmxpxvl9aHM&index=4&pp=iAQB">Yoga</a></li>
         <li><a href="https://www.psychologytoday.com/intl/basics/pessimism">Pessimism</a></li>
         <li><a href="https://www.psychologytoday.com/intl/basics/gratitude">Gratitude</a></li>
+        <li><a href="https://www.psychologytoday.com/intl/basics/conscientiousness">Conscientiousness</a></li>
 
         <li><h3>Dagligdags</h3></li>
         <li><a href="https://popularhistoria.se/">History</a></li>
@@ -38,7 +39,23 @@
             listItem.appendChild(link);
             document.getElementById("article-list").appendChild(listItem);
         }
+        
+        function generateArticleLink2() {
+            const baseURL = "https://www.google.com/search?q=";
+            const siteParam = "site:womenshealthmag.com inurl:fitness";
+            const afterParam = "after:" + getCurrentDate();
+            const searchURL = `${baseURL}${siteParam}+${afterParam}`;
+            const listItem = document.createElement("li");
+            const link = document.createElement("a");
+            link.href = searchURL;
+            link.textContent = "Fitness (WomensHealthMag)";
+            listItem.appendChild(link);
+            document.getElementById("article-list").appendChild(listItem);
+        }
+        
         generateArticleLink();
+        generateArticleLink2();
+        
         function getCurrentDate() {
             const now = new Date();
             const yesterday = new Date(now);
